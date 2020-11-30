@@ -70,7 +70,10 @@ public class XmasTreeSwing extends JFrame implements ActionListener
       imagePanel = new JPanel();
  
       //Retrieving image from the file
-      image = new ImageIcon(getClass().getResource("tree2.png"));
+      image = new ImageIcon(getClass().getResource("resources/dragon_boat.png"));
+      Image i = image.getImage();
+      Image resizedImage = i.getScaledInstance(1000, 500, Image.SCALE_SMOOTH);
+      image = new ImageIcon(resizedImage);
           
                 
       //Adding the image to a label
@@ -152,7 +155,7 @@ public class XmasTreeSwing extends JFrame implements ActionListener
       //Configure the frame
       getContentPane().setBackground(Color.white);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      setSize(500, 650);
+      setSize(1200, 650);
       setLocation(300,40);
       setVisible(true);
  
