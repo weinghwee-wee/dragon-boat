@@ -44,8 +44,11 @@ public class XmasTreeSwing extends JFrame implements ActionListener
  
    public XmasTreeSwing()
    {
+     //get screen size
+       Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+       
       //Set title
-      setTitle("Decorate the Christmas tree!");
+      setTitle("Decorate the Dragon Boat!");
  
       setLayout(new BorderLayout());
  
@@ -72,7 +75,7 @@ public class XmasTreeSwing extends JFrame implements ActionListener
       //Retrieving image from the file
       image = new ImageIcon(getClass().getResource("resources/dragon_boat.png"));
       Image i = image.getImage();
-      Image resizedImage = i.getScaledInstance(1000, 500, Image.SCALE_SMOOTH);
+      Image resizedImage = i.getScaledInstance(screenSize.width *70/100, screenSize.height *70/100, Image.SCALE_SMOOTH);
       image = new ImageIcon(resizedImage);
           
                 
@@ -155,7 +158,8 @@ public class XmasTreeSwing extends JFrame implements ActionListener
       //Configure the frame
       getContentPane().setBackground(Color.white);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      setSize(1200, 650);
+      //set around 70% of the screen size
+      setSize(screenSize.width*70/100, screenSize.height *70/100);
       setLocation(300,40);
       setVisible(true);
  
