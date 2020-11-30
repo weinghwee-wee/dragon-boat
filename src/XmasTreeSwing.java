@@ -8,6 +8,8 @@
  *
  * @author ganze
  */
+import Light.Light;
+import Light.SimpleLightFactory;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,8 +48,11 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
     private boolean ornaments = false;
     private boolean lights = false;
     private boolean bird = false;
+    
+    private SimpleLightFactory simpleLightFactory;
 
     public XmasTreeSwing() {
+        simpleLightFactory = new SimpleLightFactory();
         //get screen size
 
         //Set title
@@ -178,6 +183,9 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
         super.paint(g);
 
         if (lights) {
+            Light light = simpleLightFactory.getLight("shape");
+            light.setGraphic(g);
+            light.render();
             //draw lights
             g.setColor(Color.white);
 
