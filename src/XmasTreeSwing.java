@@ -244,7 +244,7 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
 
         if (bird) {
 
-            image = new ImageIcon(getClass().getResource("resources/IceBird.png"));
+            image = new ImageIcon(getClass().getResource("resources/articuno_fly.png"));
             Image birdImage = image.getImage();
             Image resizedImage = birdImage.getScaledInstance(screenSize.width * 20 / 100, screenSize.height * 20 / 100, Image.SCALE_SMOOTH);
             image = new ImageIcon(resizedImage);
