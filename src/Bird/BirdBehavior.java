@@ -14,12 +14,12 @@ import java.awt.Image;
  */
 public interface BirdBehavior {
 
-    public void move();
+    public void move(Graphics g);
 
     //for drawing purpose
-    public int getX();
-
-    public int getY();
-
-    public Image getImage();
+//    public int getX();
+//
+//    public int getY();
+//
+//    public Image getImage();
 }

@@ -207,7 +207,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         //Configure the frame
         getContentPane().setBackground(Color.white);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         //set around 70% of the screen size
         setSize(screenSize.width * 70 / 100, screenSize.height * 80 / 100);
         setLocation(300, 40);
@@ -215,10 +215,6 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         setResizable(false);
 
     }//Constructor
-
-    public void drawBird(Graphics g, Bird bird) {
-        g.drawImage(bird.getImage(), bird.getX(), bird.getY(), this);
-    }
 
     public void paint(Graphics g) {
         //Call the paint method of the superclass
@@ -278,11 +274,11 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         }//if presents
 
         if (checkArticuno) {
-            drawBird(g, articuno);
+            articuno.performBirdBehavior(g);
         }
 
         if (checkPenguin) {
-            drawBird(g, penguin);
+            penguin.performBirdBehavior(g);
         }
 
     } //paint
@@ -320,22 +316,18 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         else if (event.getSource() == articunoFlyButton) {
             checkArticuno = true;
             articuno.setBirdBehavior(new FlyingBird("articuno"));
-            articuno.performBirdBehavior();
             repaint();
         } else if (event.getSource() == articunoRestButton) {
             checkArticuno = true;
             articuno.setBirdBehavior(new RestingBird("articuno"));
-            articuno.performBirdBehavior();
             repaint();
         } else if (event.getSource() == penguinSwimButton) {
             checkPenguin = true;
             penguin.setBirdBehavior(new SwimmingBird("penguin"));
-            penguin.performBirdBehavior();
             repaint();
         } else if (event.getSource() == penguinRestButton) {
             checkPenguin = true;
             penguin.setBirdBehavior(new RestingBird("penguin"));
-            penguin.performBirdBehavior();
             repaint();
         } else {
             System.exit(0);
