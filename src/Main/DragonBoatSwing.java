@@ -15,6 +15,9 @@ import Bird.FlyingBird;
 import Bird.Penguin;
 import Bird.RestingBird;
 import Bird.SwimmingBird;
+import Fish.DisplayFishCommand;
+import Fish.Fish;
+import Fish.FishInvoker;
 import Light.Light;
 import Light.SimpleLightFactory;
 import javax.swing.*;
@@ -41,6 +44,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     private JButton articunoRestButton;
     private JButton penguinSwimButton;
     private JButton penguinRestButton;
+    private JButton fishDisplayButton;
     private JButton exitButton;
 
     //Panels
@@ -58,18 +62,25 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     private boolean lights = false;
     private boolean checkArticuno = false;
     private boolean checkPenguin = false;
+    private boolean checkFish = false;
 
     private SimpleLightFactory simpleLightFactory;
     private Bird articuno;
     private Bird penguin;
-
+    private FishInvoker fishInvoker;
+    private Fish fish;
+    
     public DragonBoatSwing() {
         simpleLightFactory = new SimpleLightFactory();
+        fishInvoker = new FishInvoker();
 
         //init the birds
         articuno = new Articuno();
         penguin = new Penguin();
 
+        //init fish
+        fish = new Fish();
+        
         //Set title
         setTitle("Decorate the Dragon Boat!");
 
@@ -141,6 +152,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         articunoRestButton = new JButton("Articuno Resting");
         penguinSwimButton = new JButton("Penguin Swimming");
         penguinRestButton = new JButton("Penguin Resting");
+        fishDisplayButton = new JButton("Fish");
         exitButton = new JButton("Exit");
 
         //Setting colour of buttons
@@ -152,6 +164,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         articunoRestButton.setBackground(Color.red);
         penguinSwimButton.setBackground(Color.red);
         penguinRestButton.setBackground(Color.red);
+        fishDisplayButton.setBackground(Color.red);
         exitButton.setBackground(Color.red);
 
         //Setting font on buttons
@@ -163,6 +176,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         articunoRestButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         penguinSwimButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         penguinRestButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
+        fishDisplayButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         exitButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
 
         //Setting font colour on buttons
@@ -174,6 +188,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         articunoRestButton.setForeground(Color.white);
         penguinSwimButton.setForeground(Color.white);
         penguinRestButton.setForeground(Color.white);
+        fishDisplayButton.setForeground(Color.white);
         exitButton.setForeground(Color.white);
 
         //Add the buttons to the buttonPanel
@@ -185,6 +200,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         buttonPanel.add(articunoRestButton);
         buttonPanel.add(penguinSwimButton);
         buttonPanel.add(penguinRestButton);
+        buttonPanel.add(fishDisplayButton);
         buttonPanel.add(exitButton);
 
         //Enable buttons to listen for a mouse-click
@@ -196,6 +212,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         articunoRestButton.addActionListener(this);
         penguinSwimButton.addActionListener(this);
         penguinRestButton.addActionListener(this);
+        fishDisplayButton.addActionListener(this);
         exitButton.addActionListener(this);
 
         //Positioning Panels
@@ -284,6 +301,12 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         if (checkPenguin) {
             drawBird(g, penguin);
         }
+        
+        if (checkFish) {
+            DisplayFishCommand display = new DisplayFishCommand(fish, g);
+            fishInvoker.setCommand(display);
+            fishInvoker.buttonWasPressed();
+        }
 
     } //paint
 
@@ -336,6 +359,9 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
             checkPenguin = true;
             penguin.setBirdBehavior(new RestingBird("penguin"));
             penguin.performBirdBehavior();
+            repaint();
+        } else if (event.getSource() == fishDisplayButton) {
+            checkFish = true;
             repaint();
         } else {
             System.exit(0);
