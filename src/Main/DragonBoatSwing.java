@@ -36,8 +36,6 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
     private JButton lightButton;
     private JButton lightImageButton;
-    private JButton presentButton;
-    private JButton ornamentButton;
     private JButton addAllButton;
     private JButton articunoFlyButton;
     private JButton articunoRestButton;
@@ -55,8 +53,6 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     private ImageIcon image;
 
     //To determine whether to display 
-    private boolean presents = false;
-    private boolean ornaments = false;
     private boolean lights = false;
     private boolean imageLights = false;
     private boolean checkArticuno = false;
@@ -94,23 +90,19 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         //Setting colour of title panel
         titlePanel.setBackground(Color.white);
 
-        //Creating a new JPanel for the image to go
-        imagePanel = new JPanel();
+        
 
         //Retrieving image from the file
         image = new ImageIcon(getClass().getResource("/resources/dragon_boat.png"));
         Image i = image.getImage();
         Image resizedImage = i.getScaledInstance(screenSize.width * 70 / 100, screenSize.height * 70 / 100, Image.SCALE_SMOOTH);
         image = new ImageIcon(resizedImage);
-
-        //Adding the image to a label
         imageLabel = new JLabel(image);
-
-        //Adding image label to the image panel
+        imagePanel = new JPanel();
         imagePanel.add(imageLabel);
-
-        //Setting colour of image panel
         imagePanel.setBackground(Color.white);
+        
+        
 
         //Creating a new JPanel for the buttons to go
         buttonPanel = new JPanel();
@@ -119,7 +111,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         buttonPanel.setBackground(Color.white);
 
         //Button Label
-//         buttonLabel = new JLabel("Click on the button to add the item to the tree.");
+        buttonLabel = new JLabel("Click on the button to add the item to the tree.");
         buttonLabel = new JLabel("");
         buttonLabel.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         buttonLabel.setForeground(Color.red);
@@ -134,8 +126,6 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         //Naming buttons
         lightButton = new CommonButton("Lights", this).getButton();
         lightImageButton = new CommonButton("Image Lights", this).getButton();
-        presentButton = new CommonButton("Presents", this).getButton();
-        ornamentButton = new CommonButton("Ornaments", this).getButton();
         addAllButton = new CommonButton("Add All", this).getButton();
         articunoFlyButton = new CommonButton("Articuno Fly", this).getButton();
         articunoRestButton = new CommonButton("Articuno Rest", this).getButton();
@@ -146,13 +136,11 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         //Add the buttons to the buttonPanel
         buttonPanel.add(lightImageButton);
         buttonPanel.add(lightButton);
-        buttonPanel.add(ornamentButton);
-        buttonPanel.add(presentButton);
-        buttonPanel.add(addAllButton);
         buttonPanel.add(articunoFlyButton);
         buttonPanel.add(articunoRestButton);
         buttonPanel.add(penguinSwimButton);
         buttonPanel.add(penguinRestButton);
+        buttonPanel.add(addAllButton);
         buttonPanel.add(exitButton);
 
         //Positioning Panels
@@ -187,35 +175,6 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
             light.render(g);
         }
 
-        if (ornaments) {
-            //draw ornaments
-            g.setColor(Color.red);
-            g.fillOval(220, 220, 15, 15);
-            g.fillOval(280, 220, 15, 15);
-            g.setColor(Color.blue);
-            g.fillOval(320, 380, 15, 15);
-            g.fillOval(180, 380, 15, 15);
-            g.setColor(Color.cyan);
-            g.fillOval(200, 300, 15, 15);
-            g.fillOval(300, 300, 15, 15);
-
-        }//if ornaments
-
-        if (presents) {
-            //draw presents
-            g.setColor(Color.red);
-            g.fillRect(320, 400, 60, 60);
-            g.fillRect(140, 380, 30, 30);
-
-            g.setColor(Color.orange);
-            g.fillRect(180, 430, 40, 40);
-
-            g.setColor(Color.blue);
-            g.fillRect(120, 400, 60, 60);
-            g.fillRect(360, 440, 30, 30);
-
-        }//if presents
-
         if (checkArticuno) {
             articuno.performBirdBehavior(g);
         }
@@ -230,8 +189,6 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
 
         if (event.getSource() == lightButton) {
-            ornaments = false;
-            presents = false;
             lights = true;
             repaint();
 
@@ -240,24 +197,8 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
             imageLights = true;
             repaint();
         }
-        else if (event.getSource() == ornamentButton) {
-            lights = false;
-            presents = false;
-            ornaments = true;
-            repaint();
-
-        }//if ornament
-        else if (event.getSource() == presentButton) {
-            lights = false;
-            ornaments = false;
-            presents = true;
-            repaint();
-
-        }//if present
         else if (event.getSource() == addAllButton) {
             lights = true;
-            ornaments = true;
-            presents = true;
             repaint();
         }//if add all
         else if (event.getSource() == articunoFlyButton) {
