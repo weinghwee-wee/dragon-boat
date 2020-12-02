@@ -15,6 +15,7 @@ import Bird.FlyingBird;
 import Bird.Penguin;
 import Bird.RestingBird;
 import Bird.SwimmingBird;
+import Common.CommonButton;
 import Light.Light;
 import Light.SimpleLightFactory;
 import javax.swing.*;
@@ -131,52 +132,16 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         infoPanel.setBackground(Color.white);
 
         //Naming buttons
-        lightButton = new JButton("Lights");
-        lightImageButton = new JButton("ImageLights");
-        presentButton = new JButton("Presents");
-        ornamentButton = new JButton("Ornaments");
-        addAllButton = new JButton("Add All");
-        articunoFlyButton = new JButton("Articuno Flying");
-        articunoRestButton = new JButton("Articuno Resting");
-        penguinSwimButton = new JButton("Penguin Swimming");
-        penguinRestButton = new JButton("Penguin Resting");
-        exitButton = new JButton("Exit");
-
-        //Setting colour of buttons
-        lightButton.setBackground(Color.red);
-        lightImageButton.setBackground(Color.red);
-        ornamentButton.setBackground(Color.red);
-        presentButton.setBackground(Color.red);
-        addAllButton.setBackground(Color.red);
-        articunoFlyButton.setBackground(Color.red);
-        articunoRestButton.setBackground(Color.red);
-        penguinSwimButton.setBackground(Color.red);
-        penguinRestButton.setBackground(Color.red);
-        exitButton.setBackground(Color.red);
-
-        //Setting font on buttons
-        lightButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        lightImageButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        ornamentButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        presentButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        addAllButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        articunoFlyButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        articunoRestButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        penguinSwimButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        penguinRestButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        exitButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-
-        //Setting font colour on buttons
-        lightButton.setForeground(Color.white);
-        lightImageButton.setForeground(Color.white);
-        ornamentButton.setForeground(Color.white);
-        presentButton.setForeground(Color.white);
-        addAllButton.setForeground(Color.white);
-        articunoFlyButton.setForeground(Color.white);
-        articunoRestButton.setForeground(Color.white);
-        penguinSwimButton.setForeground(Color.white);
-        penguinRestButton.setForeground(Color.white);
-        exitButton.setForeground(Color.white);
+        lightButton = new CommonButton("Lights", this).getButton();
+        lightImageButton = new CommonButton("Image Lights", this).getButton();
+        presentButton = new CommonButton("Presents", this).getButton();
+        ornamentButton = new CommonButton("Ornaments", this).getButton();
+        addAllButton = new CommonButton("Add All", this).getButton();
+        articunoFlyButton = new CommonButton("Articuno Fly", this).getButton();
+        articunoRestButton = new CommonButton("Articuno Rest", this).getButton();
+        penguinSwimButton = new CommonButton("Penguin Swim", this).getButton();
+        penguinRestButton = new CommonButton("Penguin Rest", this).getButton();
+        exitButton = new CommonButton("Exit", this).getButton();
 
         //Add the buttons to the buttonPanel
         buttonPanel.add(lightImageButton);
@@ -189,18 +154,6 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         buttonPanel.add(penguinSwimButton);
         buttonPanel.add(penguinRestButton);
         buttonPanel.add(exitButton);
-
-        //Enable buttons to listen for a mouse-click
-        lightButton.addActionListener(this);
-        lightImageButton.addActionListener(this);
-        ornamentButton.addActionListener(this);
-        presentButton.addActionListener(this);
-        addAllButton.addActionListener(this);
-        articunoFlyButton.addActionListener(this);
-        articunoRestButton.addActionListener(this);
-        penguinSwimButton.addActionListener(this);
-        penguinRestButton.addActionListener(this);
-        exitButton.addActionListener(this);
 
         //Positioning Panels
         add(titlePanel, BorderLayout.NORTH);
