@@ -30,7 +30,7 @@ public class FlyingBird implements BirdBehavior {
     }
 
     @Override
-    public void move() {
+    public void move(Graphics g) {
         //get image of behavior when perform behavior
         String imageURL = "/resources/" + name + "_fly.png";
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
@@ -40,34 +40,11 @@ public class FlyingBird implements BirdBehavior {
         ImageIcon weird = new ImageIcon(resizedImage);
 
         //set x , y , image
-        setImage(resizedImage);
-        setX(screen.width * 50 / 100);
-        setY(70);
-    }
-
-    //getter and setter
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+        image = resizedImage;
+        x = screen.width * 50 / 100;
+        y = 70;
+        
+        g.drawImage(image, x, y, null);
     }
 
 }

@@ -18,6 +18,7 @@ import Bird.SwimmingBird;
 import Fish.DisplayFishCommand;
 import Fish.Fish;
 import Fish.FishInvoker;
+import Common.CommonButton;
 import Light.Light;
 import Light.SimpleLightFactory;
 import javax.swing.*;
@@ -37,8 +38,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     private JButton lightButton;
-    private JButton presentButton;
-    private JButton ornamentButton;
+    private JButton lightImageButton;
     private JButton addAllButton;
     private JButton articunoFlyButton;
     private JButton articunoRestButton;
@@ -57,9 +57,8 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     private ImageIcon image;
 
     //To determine whether to display 
-    private boolean presents = false;
-    private boolean ornaments = false;
     private boolean lights = false;
+    private boolean imageLights = false;
     private boolean checkArticuno = false;
     private boolean checkPenguin = false;
     private boolean checkFish = false;
@@ -83,14 +82,11 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         
         //Set title
         setTitle("Decorate the Dragon Boat!");
-
         setLayout(new BorderLayout());
 
         //Setting the title of the JLabel
-        title = new JLabel("Click on the button to add the adornment to the event.");
+        title = new JLabel("Click the buttons below to decorate your Dragon Boat!");
 
-        //Setting the font
-        title.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 15));
 
         //Setting the text colour to red and positioning it to the centre
         title.setForeground(Color.red);
@@ -106,23 +102,19 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         //Setting colour of title panel
         titlePanel.setBackground(Color.white);
 
-        //Creating a new JPanel for the image to go
-        imagePanel = new JPanel();
+        
 
         //Retrieving image from the file
         image = new ImageIcon(getClass().getResource("/resources/dragon_boat.png"));
         Image i = image.getImage();
         Image resizedImage = i.getScaledInstance(screenSize.width * 70 / 100, screenSize.height * 70 / 100, Image.SCALE_SMOOTH);
         image = new ImageIcon(resizedImage);
-
-        //Adding the image to a label
         imageLabel = new JLabel(image);
-
-        //Adding image label to the image panel
+        imagePanel = new JPanel();
         imagePanel.add(imageLabel);
-
-        //Setting colour of image panel
         imagePanel.setBackground(Color.white);
+        
+        
 
         //Creating a new JPanel for the buttons to go
         buttonPanel = new JPanel();
@@ -131,7 +123,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         buttonPanel.setBackground(Color.white);
 
         //Button Label
-//         buttonLabel = new JLabel("Click on the button to add the item to the tree.");
+        buttonLabel = new JLabel("Click on the button to add the item to the tree.");
         buttonLabel = new JLabel("");
         buttonLabel.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         buttonLabel.setForeground(Color.red);
@@ -144,76 +136,26 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         infoPanel.setBackground(Color.white);
 
         //Naming buttons
-        lightButton = new JButton("Lights");
-        presentButton = new JButton("Presents");
-        ornamentButton = new JButton("Ornaments");
-        addAllButton = new JButton("Add All");
-        articunoFlyButton = new JButton("Articuno Flying");
-        articunoRestButton = new JButton("Articuno Resting");
-        penguinSwimButton = new JButton("Penguin Swimming");
-        penguinRestButton = new JButton("Penguin Resting");
-        fishDisplayButton = new JButton("Fish");
-        exitButton = new JButton("Exit");
-
-        //Setting colour of buttons
-        lightButton.setBackground(Color.red);
-        ornamentButton.setBackground(Color.red);
-        presentButton.setBackground(Color.red);
-        addAllButton.setBackground(Color.red);
-        articunoFlyButton.setBackground(Color.red);
-        articunoRestButton.setBackground(Color.red);
-        penguinSwimButton.setBackground(Color.red);
-        penguinRestButton.setBackground(Color.red);
-        fishDisplayButton.setBackground(Color.red);
-        exitButton.setBackground(Color.red);
-
-        //Setting font on buttons
-        lightButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        ornamentButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        presentButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        addAllButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        articunoFlyButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        articunoRestButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        penguinSwimButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        penguinRestButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        fishDisplayButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        exitButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-
-        //Setting font colour on buttons
-        lightButton.setForeground(Color.white);
-        ornamentButton.setForeground(Color.white);
-        presentButton.setForeground(Color.white);
-        addAllButton.setForeground(Color.white);
-        articunoFlyButton.setForeground(Color.white);
-        articunoRestButton.setForeground(Color.white);
-        penguinSwimButton.setForeground(Color.white);
-        penguinRestButton.setForeground(Color.white);
-        fishDisplayButton.setForeground(Color.white);
-        exitButton.setForeground(Color.white);
+        lightButton = new CommonButton("Lights", this).getButton();
+        lightImageButton = new CommonButton("Image Lights", this).getButton();
+        addAllButton = new CommonButton("Add All", this).getButton();
+        articunoFlyButton = new CommonButton("Articuno Fly", this).getButton();
+        articunoRestButton = new CommonButton("Articuno Rest", this).getButton();
+        penguinSwimButton = new CommonButton("Penguin Swim", this).getButton();
+        penguinRestButton = new CommonButton("Penguin Rest", this).getButton();
+        fishDisplayButton = new CommonButton("Fish", this).getButton();
+        exitButton = new CommonButton("Exit", this).getButton();
 
         //Add the buttons to the buttonPanel
+        buttonPanel.add(lightImageButton);
         buttonPanel.add(lightButton);
-        buttonPanel.add(ornamentButton);
-        buttonPanel.add(presentButton);
-        buttonPanel.add(addAllButton);
         buttonPanel.add(articunoFlyButton);
         buttonPanel.add(articunoRestButton);
         buttonPanel.add(penguinSwimButton);
         buttonPanel.add(penguinRestButton);
         buttonPanel.add(fishDisplayButton);
+        buttonPanel.add(addAllButton);
         buttonPanel.add(exitButton);
-
-        //Enable buttons to listen for a mouse-click
-        lightButton.addActionListener(this);
-        ornamentButton.addActionListener(this);
-        presentButton.addActionListener(this);
-        addAllButton.addActionListener(this);
-        articunoFlyButton.addActionListener(this);
-        articunoRestButton.addActionListener(this);
-        penguinSwimButton.addActionListener(this);
-        penguinRestButton.addActionListener(this);
-        fishDisplayButton.addActionListener(this);
-        exitButton.addActionListener(this);
 
         //Positioning Panels
         add(titlePanel, BorderLayout.NORTH);
@@ -224,7 +166,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         //Configure the frame
         getContentPane().setBackground(Color.white);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         //set around 70% of the screen size
         setSize(screenSize.width * 70 / 100, screenSize.height * 80 / 100);
         setLocation(300, 40);
@@ -233,73 +175,26 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
     }//Constructor
 
-    public void drawBird(Graphics g, Bird bird) {
-        g.drawImage(bird.getImage(), bird.getX(), bird.getY(), this);
-    }
-
     public void paint(Graphics g) {
         //Call the paint method of the superclass
         super.paint(g);
         if (lights) {
             Light light = simpleLightFactory.getLight("shape");
-            light.setGraphic(g);
-            light.render();
-            //draw lights
-            g.setColor(Color.white);
+            light.render(g);
 
-            //middle lights
-            g.fillOval(250, 190, 10, 10);
-            g.fillOval(250, 260, 10, 10);
-            g.fillOval(250, 350, 10, 10);
-            g.fillOval(250, 430, 10, 10);
-
-            //left lights
-            g.fillOval(200, 260, 10, 10);
-            g.fillOval(180, 350, 10, 10);
-            g.fillOval(160, 430, 10, 10);
-
-            //right lights
-            g.fillOval(300, 260, 10, 10);
-            g.fillOval(330, 350, 10, 10);
-            g.fillOval(340, 430, 10, 10);
-
-        }//if lights
-
-        if (ornaments) {
-            //draw ornaments
-            g.setColor(Color.red);
-            g.fillOval(220, 220, 15, 15);
-            g.fillOval(280, 220, 15, 15);
-            g.setColor(Color.blue);
-            g.fillOval(320, 380, 15, 15);
-            g.fillOval(180, 380, 15, 15);
-            g.setColor(Color.cyan);
-            g.fillOval(200, 300, 15, 15);
-            g.fillOval(300, 300, 15, 15);
-
-        }//if ornaments
-
-        if (presents) {
-            //draw presents
-            g.setColor(Color.red);
-            g.fillRect(320, 400, 60, 60);
-            g.fillRect(140, 380, 30, 30);
-
-            g.setColor(Color.orange);
-            g.fillRect(180, 430, 40, 40);
-
-            g.setColor(Color.blue);
-            g.fillRect(120, 400, 60, 60);
-            g.fillRect(360, 440, 30, 30);
-
-        }//if presents
+        }
+        
+        if (imageLights) {
+            Light light = simpleLightFactory.getLight("image");
+            light.render(g);
+        }
 
         if (checkArticuno) {
-            drawBird(g, articuno);
+            articuno.performBirdBehavior(g);
         }
 
         if (checkPenguin) {
-            drawBird(g, penguin);
+            penguin.performBirdBehavior(g);
         }
         
         if (checkFish) {
@@ -314,51 +209,33 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
 
         if (event.getSource() == lightButton) {
-            ornaments = false;
-            presents = false;
             lights = true;
             repaint();
 
         }//if light
-        else if (event.getSource() == ornamentButton) {
-            lights = false;
-            presents = false;
-            ornaments = true;
+        else if (event.getSource() == lightImageButton) {
+            imageLights = true;
             repaint();
-
-        }//if ornament
-        else if (event.getSource() == presentButton) {
-            lights = false;
-            ornaments = false;
-            presents = true;
-            repaint();
-
-        }//if present
+        }
         else if (event.getSource() == addAllButton) {
             lights = true;
-            ornaments = true;
-            presents = true;
             repaint();
         }//if add all
         else if (event.getSource() == articunoFlyButton) {
             checkArticuno = true;
             articuno.setBirdBehavior(new FlyingBird("articuno"));
-            articuno.performBirdBehavior();
             repaint();
         } else if (event.getSource() == articunoRestButton) {
             checkArticuno = true;
             articuno.setBirdBehavior(new RestingBird("articuno"));
-            articuno.performBirdBehavior();
             repaint();
         } else if (event.getSource() == penguinSwimButton) {
             checkPenguin = true;
             penguin.setBirdBehavior(new SwimmingBird("penguin"));
-            penguin.performBirdBehavior();
             repaint();
         } else if (event.getSource() == penguinRestButton) {
             checkPenguin = true;
             penguin.setBirdBehavior(new RestingBird("penguin"));
-            penguin.performBirdBehavior();
             repaint();
         } else if (event.getSource() == fishDisplayButton) {
             checkFish = true;

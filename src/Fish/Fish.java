@@ -21,7 +21,6 @@ public class Fish {
     }
 
     public void display(Graphics g) {
-        System.out.println("11");
         ImageIcon image_blue_fish = new ImageIcon(getClass().getResource("../resources/blue_fish.png"));
         ImageIcon image_orange_fish = new ImageIcon(getClass().getResource("../resources/orange_fish.png"));
         Image blueFishImage = image_blue_fish.getImage();

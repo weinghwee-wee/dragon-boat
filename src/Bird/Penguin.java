@@ -17,15 +17,4 @@ public class Penguin extends Bird {
         birdBehavior = new SwimmingBird("penguin");
     }
 
-    public int getX() {
-        return birdBehavior.getX();
-    }
-
-    public int getY() {
-        return birdBehavior.getY();
-    }
-
-    public Image getImage() {
-        return birdBehavior.getImage();
-    }
 }

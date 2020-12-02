@@ -16,19 +16,12 @@ public abstract class Bird {
 
     BirdBehavior birdBehavior;
 
-    public void performBirdBehavior() {
-        birdBehavior.move();
+    public void performBirdBehavior(Graphics g) {
+        birdBehavior.move(g);
     }
 
     public void setBirdBehavior(BirdBehavior birdBehavior) {
         this.birdBehavior = birdBehavior;
     }
-
-    //all bird class child implmented to give the position and image
-    public abstract int getX();
-
-    public abstract int getY();
-
-    public abstract Image getImage();
 
 }

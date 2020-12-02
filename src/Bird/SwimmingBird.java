@@ -6,6 +6,7 @@
 package Bird;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -27,41 +28,19 @@ public class SwimmingBird implements BirdBehavior {
     }
 
     @Override
-    public void move() {
+    public void move(Graphics g) {
         //read image 
         String imageURL = "/resources/" + name + "_swim.png";
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
         Image resizedImage = imageIcon.getImage().getScaledInstance(screen.width * 10 / 100, screen.height * 10 / 100, Image.SCALE_SMOOTH);
         ImageIcon weird = new ImageIcon(resizedImage);
+
         //set x , y , image
-        setImage(resizedImage);
-        setX(screen.width * 10 / 100);
-        setY(screen.height * 60 / 100);
-    }
+        image = resizedImage;
+        x = screen.width * 10 / 100;
+        y = screen.height * 60 / 100;
 
-    //getter and setter
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+        g.drawImage(image, x, y, null);
     }
 
 }

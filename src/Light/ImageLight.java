@@ -15,18 +15,23 @@ import javax.swing.ImageIcon;
  * @author WH
  */
 public class ImageLight extends Light {
-    final int x = 310;
-    int y = 400;
-    final int lightNo = 10;
+    final int x = 530;
+    final int y = 500;
     
     public ImageLight() {
     }
     
     @Override
-    public void render() {
+    public void render(Graphics g) {
         ImageIcon image = new ImageIcon(getClass().getResource("../resources/light_image.png"));
-        Image birdImage = image.getImage();
-        Image resizedImage = birdImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        g.drawImage(resizedImage, 50, 50, null);
+        Image lightImage = image.getImage();
+        Image resizedImage = lightImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(resizedImage);
+        
+        g.drawImage(resizedImage, y, x, null);
+        g.drawImage(resizedImage, y + 100, x, null);
+        g.drawImage(resizedImage, y + 200, x, null);
+        g.drawImage(resizedImage, y + 300, x, null);
+        g.drawImage(resizedImage, y + 400, x, null);
     }
 }
