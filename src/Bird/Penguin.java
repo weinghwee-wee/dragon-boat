@@ -5,17 +5,16 @@
  */
 package Bird;
 
-import java.awt.Graphics;
 import java.awt.Image;
 
 /**
  *
- * @author WH
+ * @author Wah
  */
-public class Articuno extends Bird {
+public class Penguin extends Bird {
 
-    public Articuno() {
-        birdBehavior = new FlyingBird("articuno");
+    public Penguin() {
+        birdBehavior = new SwimmingBird("penguin");
     }
 
     public int getX() {

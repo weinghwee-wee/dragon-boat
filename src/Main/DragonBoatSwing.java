@@ -1,13 +1,20 @@
+package Main;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ganze
  */
+import Bird.Articuno;
+import Bird.Bird;
+import Bird.FlyingBird;
+import Bird.Penguin;
+import Bird.RestingBird;
+import Bird.SwimmingBird;
 import Light.Light;
 import Light.SimpleLightFactory;
 import javax.swing.*;
@@ -18,18 +25,23 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.border.EmptyBorder;
 
-public class XmasTreeSwing extends JFrame implements ActionListener {
+public class DragonBoatSwing extends JFrame implements ActionListener {
     //Buttons
 
+    //share among class as global
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     private JButton lightButton;
     private JButton presentButton;
     private JButton ornamentButton;
     private JButton addAllButton;
+    private JButton articunoFlyButton;
+    private JButton articunoRestButton;
+    private JButton penguinSwimButton;
+    private JButton penguinRestButton;
     private JButton exitButton;
-    private JButton birdButton;
 
     //Panels
     private JPanel titlePanel, imagePanel, buttonPanel, infoPanel;
@@ -40,20 +52,23 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
     //Image
     private ImageIcon image;
 
-    //Boolean
-//   private boolean presents = true;
-//   private boolean ornaments = true;
-//   private boolean lights = true;
+    //To determine whether to display 
     private boolean presents = false;
     private boolean ornaments = false;
     private boolean lights = false;
-    private boolean bird = false;
-    
-    private SimpleLightFactory simpleLightFactory;
+    private boolean checkArticuno = false;
+    private boolean checkPenguin = false;
 
-    public XmasTreeSwing() {
+    private SimpleLightFactory simpleLightFactory;
+    private Bird articuno;
+    private Bird penguin;
+
+    public DragonBoatSwing() {
         simpleLightFactory = new SimpleLightFactory();
-        //get screen size
+
+        //init the birds
+        articuno = new Articuno();
+        penguin = new Penguin();
 
         //Set title
         setTitle("Decorate the Dragon Boat!");
@@ -61,7 +76,7 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
         setLayout(new BorderLayout());
 
         //Setting the title of the JLabel
-        title = new JLabel("Click on the button to add the adornment to the tree.");
+        title = new JLabel("Click on the button to add the adornment to the event.");
 
         //Setting the font
         title.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 15));
@@ -72,6 +87,9 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
 
         //Creating a new JPanel and adding the title label to it
         titlePanel = new JPanel();
+
+        //empty border for bird to fly
+        titlePanel.setBorder(new EmptyBorder(0, 0, screenSize.height * 10 / 100, 0));
         titlePanel.add(title);
 
         //Setting colour of title panel
@@ -81,7 +99,7 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
         imagePanel = new JPanel();
 
         //Retrieving image from the file
-        image = new ImageIcon(getClass().getResource("resources/dragon_boat.png"));
+        image = new ImageIcon(getClass().getResource("/resources/dragon_boat.png"));
         Image i = image.getImage();
         Image resizedImage = i.getScaledInstance(screenSize.width * 70 / 100, screenSize.height * 70 / 100, Image.SCALE_SMOOTH);
         image = new ImageIcon(resizedImage);
@@ -102,7 +120,7 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
         buttonPanel.setBackground(Color.white);
 
         //Button Label
-        // buttonLabel = new JLabel("Click on the button to add the item to the tree.");
+//         buttonLabel = new JLabel("Click on the button to add the item to the tree.");
         buttonLabel = new JLabel("");
         buttonLabel.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         buttonLabel.setForeground(Color.red);
@@ -119,48 +137,66 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
         presentButton = new JButton("Presents");
         ornamentButton = new JButton("Ornaments");
         addAllButton = new JButton("Add All");
+        articunoFlyButton = new JButton("Articuno Flying");
+        articunoRestButton = new JButton("Articuno Resting");
+        penguinSwimButton = new JButton("Penguin Swimming");
+        penguinRestButton = new JButton("Penguin Resting");
         exitButton = new JButton("Exit");
-        birdButton = new JButton("FlyingBird");
 
         //Setting colour of buttons
         lightButton.setBackground(Color.red);
         ornamentButton.setBackground(Color.red);
         presentButton.setBackground(Color.red);
         addAllButton.setBackground(Color.red);
+        articunoFlyButton.setBackground(Color.red);
+        articunoRestButton.setBackground(Color.red);
+        penguinSwimButton.setBackground(Color.red);
+        penguinRestButton.setBackground(Color.red);
         exitButton.setBackground(Color.red);
-        birdButton.setBackground(Color.red);
 
         //Setting font on buttons
         lightButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         ornamentButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         presentButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         addAllButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
+        articunoFlyButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
+        articunoRestButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
+        penguinSwimButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
+        penguinRestButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         exitButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        birdButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
 
         //Setting font colour on buttons
         lightButton.setForeground(Color.white);
         ornamentButton.setForeground(Color.white);
         presentButton.setForeground(Color.white);
         addAllButton.setForeground(Color.white);
+        articunoFlyButton.setForeground(Color.white);
+        articunoRestButton.setForeground(Color.white);
+        penguinSwimButton.setForeground(Color.white);
+        penguinRestButton.setForeground(Color.white);
         exitButton.setForeground(Color.white);
-        birdButton.setForeground(Color.white);
 
         //Add the buttons to the buttonPanel
         buttonPanel.add(lightButton);
         buttonPanel.add(ornamentButton);
         buttonPanel.add(presentButton);
         buttonPanel.add(addAllButton);
+        buttonPanel.add(articunoFlyButton);
+        buttonPanel.add(articunoRestButton);
+        buttonPanel.add(penguinSwimButton);
+        buttonPanel.add(penguinRestButton);
         buttonPanel.add(exitButton);
-        buttonPanel.add(birdButton);
 
         //Enable buttons to listen for a mouse-click
         lightButton.addActionListener(this);
         ornamentButton.addActionListener(this);
         presentButton.addActionListener(this);
         addAllButton.addActionListener(this);
+        articunoFlyButton.addActionListener(this);
+        articunoRestButton.addActionListener(this);
+        penguinSwimButton.addActionListener(this);
+        penguinRestButton.addActionListener(this);
         exitButton.addActionListener(this);
-        birdButton.addActionListener(this);
 
         //Positioning Panels
         add(titlePanel, BorderLayout.NORTH);
@@ -171,17 +207,22 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
         //Configure the frame
         getContentPane().setBackground(Color.white);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         //set around 70% of the screen size
-        setSize(screenSize.width * 70 / 100, screenSize.height * 70 / 100);
+        setSize(screenSize.width * 70 / 100, screenSize.height * 80 / 100);
         setLocation(300, 40);
         setVisible(true);
+        setResizable(false);
 
     }//Constructor
+
+    public void drawBird(Graphics g, Bird bird) {
+        g.drawImage(bird.getImage(), bird.getX(), bird.getY(), this);
+    }
 
     public void paint(Graphics g) {
         //Call the paint method of the superclass
         super.paint(g);
-
         if (lights) {
             Light light = simpleLightFactory.getLight("shape");
             light.setGraphic(g);
@@ -224,31 +265,24 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
         if (presents) {
             //draw presents
             g.setColor(Color.red);
-            //   g.fillRect(320,500,60,60);
-            //    g.fillRect(140,480,30,30);
             g.fillRect(320, 400, 60, 60);
             g.fillRect(140, 380, 30, 30);
 
             g.setColor(Color.orange);
-            //   g.fillRect(180,530,40,40);
             g.fillRect(180, 430, 40, 40);
 
             g.setColor(Color.blue);
-            //     g.fillRect(120,500,60,60);
-            //   g.fillRect(360,540,30,30);
-
             g.fillRect(120, 400, 60, 60);
             g.fillRect(360, 440, 30, 30);
 
         }//if presents
 
-        if (bird) {
+        if (checkArticuno) {
+            drawBird(g, articuno);
+        }
 
-            image = new ImageIcon(getClass().getResource("resources/articuno_fly.png"));
-            Image birdImage = image.getImage();
-            Image resizedImage = birdImage.getScaledInstance(screenSize.width * 20 / 100, screenSize.height * 20 / 100, Image.SCALE_SMOOTH);
-            image = new ImageIcon(resizedImage);
-            g.drawImage(resizedImage, screenSize.width *40/100, screenSize.height*5/100, this);
+        if (checkPenguin) {
+            drawBird(g, penguin);
         }
 
     } //paint
@@ -283,8 +317,25 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
             presents = true;
             repaint();
         }//if add all
-        else if (event.getSource() == birdButton) {
-            bird = true;
+        else if (event.getSource() == articunoFlyButton) {
+            checkArticuno = true;
+            articuno.setBirdBehavior(new FlyingBird("articuno"));
+            articuno.performBirdBehavior();
+            repaint();
+        } else if (event.getSource() == articunoRestButton) {
+            checkArticuno = true;
+            articuno.setBirdBehavior(new RestingBird("articuno"));
+            articuno.performBirdBehavior();
+            repaint();
+        } else if (event.getSource() == penguinSwimButton) {
+            checkPenguin = true;
+            penguin.setBirdBehavior(new SwimmingBird("penguin"));
+            penguin.performBirdBehavior();
+            repaint();
+        } else if (event.getSource() == penguinRestButton) {
+            checkPenguin = true;
+            penguin.setBirdBehavior(new RestingBird("penguin"));
+            penguin.performBirdBehavior();
             repaint();
         } else {
             System.exit(0);
@@ -294,7 +345,7 @@ public class XmasTreeSwing extends JFrame implements ActionListener {
     } //actionPerformed
 
     public static void main(String[] args) {
-        XmasTreeSwing gui = new XmasTreeSwing();
+        DragonBoatSwing gui = new DragonBoatSwing();
 
     }//main
 

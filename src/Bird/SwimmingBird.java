@@ -5,18 +5,16 @@
  */
 package Bird;
 
-import Main.DragonBoatSwing;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 /**
  *
- * @author WH
+ * @author Wah
  */
-public class FlyingBird implements BirdBehavior {
+public class SwimmingBird implements BirdBehavior {
 
     Image image;
     int x;
@@ -24,25 +22,21 @@ public class FlyingBird implements BirdBehavior {
     String name;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
-    //pass name of the bird when init
-    public FlyingBird(String name) {
+    public SwimmingBird(String name) {
         this.name = name;
     }
 
     @Override
     public void move() {
-        //get image of behavior when perform behavior
-        String imageURL = "/resources/" + name + "_fly.png";
+        //read image 
+        String imageURL = "/resources/" + name + "_swim.png";
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
-        Image resizedImage = imageIcon.getImage().getScaledInstance(screen.width * 20 / 100, screen.height * 20 / 100, Image.SCALE_SMOOTH);
-
-        //without this line cannot paint out.. i also weird
+        Image resizedImage = imageIcon.getImage().getScaledInstance(screen.width * 10 / 100, screen.height * 10 / 100, Image.SCALE_SMOOTH);
         ImageIcon weird = new ImageIcon(resizedImage);
-
         //set x , y , image
         setImage(resizedImage);
-        setX(screen.width * 50 / 100);
-        setY(70);
+        setX(screen.width * 10 / 100);
+        setY(screen.height * 60 / 100);
     }
 
     //getter and setter

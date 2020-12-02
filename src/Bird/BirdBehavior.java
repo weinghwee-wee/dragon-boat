@@ -6,11 +6,20 @@
 package Bird;
 
 import java.awt.Graphics;
+import java.awt.Image;
 
 /**
  *
  * @author WH
  */
 public interface BirdBehavior {
+
     public void move();
+
+    //for drawing purpose
+    public int getX();
+
+    public int getY();
+
+    public Image getImage();
 }
