@@ -12,10 +12,5 @@ import java.awt.Graphics;
  * @author WH
  */
 public abstract class Light {
-    Graphics g;
-    
-    public abstract void render();
-    public void setGraphic(Graphics g) {
-        this.g = g;
-    };
+    public abstract void render(Graphics g);
 }

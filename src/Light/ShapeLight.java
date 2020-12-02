@@ -13,16 +13,16 @@ import java.awt.Graphics;
  * @author WH
  */
 public class ShapeLight extends Light{
-    final int x = 450;
-    final int y = 400;
+    final int x = 570;
+    final int y = 470;
     //    final int lightNo = 10;
     
     public ShapeLight() {
     }
     
     @Override
-    public void render() {
-        g.setColor(Color.pink);
+    public void render(Graphics g) {
+        g.setColor(Color.YELLOW);
         g.fillOval(y, x, 20, 20);
         g.fillOval(y + 100, x, 20, 20);
         g.fillOval(y + 200, x, 20, 20);

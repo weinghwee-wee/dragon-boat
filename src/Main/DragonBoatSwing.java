@@ -34,6 +34,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     private JButton lightButton;
+    private JButton lightImageButton;
     private JButton presentButton;
     private JButton ornamentButton;
     private JButton addAllButton;
@@ -56,6 +57,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     private boolean presents = false;
     private boolean ornaments = false;
     private boolean lights = false;
+    private boolean imageLights = false;
     private boolean checkArticuno = false;
     private boolean checkPenguin = false;
 
@@ -65,21 +67,17 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
     public DragonBoatSwing() {
         simpleLightFactory = new SimpleLightFactory();
-
         //init the birds
         articuno = new Articuno();
         penguin = new Penguin();
 
         //Set title
         setTitle("Decorate the Dragon Boat!");
-
         setLayout(new BorderLayout());
 
         //Setting the title of the JLabel
-        title = new JLabel("Click on the button to add the adornment to the event.");
+        title = new JLabel("Click the buttons below to decorate your Dragon Boat!");
 
-        //Setting the font
-        title.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 15));
 
         //Setting the text colour to red and positioning it to the centre
         title.setForeground(Color.red);
@@ -134,6 +132,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
         //Naming buttons
         lightButton = new JButton("Lights");
+        lightImageButton = new JButton("ImageLights");
         presentButton = new JButton("Presents");
         ornamentButton = new JButton("Ornaments");
         addAllButton = new JButton("Add All");
@@ -145,6 +144,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
         //Setting colour of buttons
         lightButton.setBackground(Color.red);
+        lightImageButton.setBackground(Color.red);
         ornamentButton.setBackground(Color.red);
         presentButton.setBackground(Color.red);
         addAllButton.setBackground(Color.red);
@@ -156,6 +156,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
         //Setting font on buttons
         lightButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
+        lightImageButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         ornamentButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         presentButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
         addAllButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
@@ -167,6 +168,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
         //Setting font colour on buttons
         lightButton.setForeground(Color.white);
+        lightImageButton.setForeground(Color.white);
         ornamentButton.setForeground(Color.white);
         presentButton.setForeground(Color.white);
         addAllButton.setForeground(Color.white);
@@ -177,6 +179,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         exitButton.setForeground(Color.white);
 
         //Add the buttons to the buttonPanel
+        buttonPanel.add(lightImageButton);
         buttonPanel.add(lightButton);
         buttonPanel.add(ornamentButton);
         buttonPanel.add(presentButton);
@@ -189,6 +192,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
         //Enable buttons to listen for a mouse-click
         lightButton.addActionListener(this);
+        lightImageButton.addActionListener(this);
         ornamentButton.addActionListener(this);
         presentButton.addActionListener(this);
         addAllButton.addActionListener(this);
@@ -221,28 +225,14 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         super.paint(g);
         if (lights) {
             Light light = simpleLightFactory.getLight("shape");
-            light.setGraphic(g);
-            light.render();
-            //draw lights
-            g.setColor(Color.white);
+            light.render(g);
 
-            //middle lights
-            g.fillOval(250, 190, 10, 10);
-            g.fillOval(250, 260, 10, 10);
-            g.fillOval(250, 350, 10, 10);
-            g.fillOval(250, 430, 10, 10);
-
-            //left lights
-            g.fillOval(200, 260, 10, 10);
-            g.fillOval(180, 350, 10, 10);
-            g.fillOval(160, 430, 10, 10);
-
-            //right lights
-            g.fillOval(300, 260, 10, 10);
-            g.fillOval(330, 350, 10, 10);
-            g.fillOval(340, 430, 10, 10);
-
-        }//if lights
+        }
+        
+        if (imageLights) {
+            Light light = simpleLightFactory.getLight("image");
+            light.render(g);
+        }
 
         if (ornaments) {
             //draw ornaments
@@ -293,6 +283,10 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
             repaint();
 
         }//if light
+        else if (event.getSource() == lightImageButton) {
+            imageLights = true;
+            repaint();
+        }
         else if (event.getSource() == ornamentButton) {
             lights = false;
             presents = false;
