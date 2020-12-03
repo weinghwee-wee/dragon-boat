@@ -5,7 +5,6 @@
  */
 package Bird;
 
-import Main.DragonBoatSwing;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;

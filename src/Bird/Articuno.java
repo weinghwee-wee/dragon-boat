@@ -5,9 +5,6 @@
  */
 package Bird;
 
-import java.awt.Graphics;
-import java.awt.Image;
-
 /**
  *
  * @author WH

@@ -15,6 +15,7 @@ import Bird.FlyingBird;
 import Bird.Penguin;
 import Bird.RestingBird;
 import Bird.SwimmingBird;
+import Common.ButtonContainer;
 import Fish.DisplayFishCommand;
 import Fish.Fish;
 import Fish.FishInvoker;
@@ -25,10 +26,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.border.EmptyBorder;
 
 public class DragonBoatSwing extends JFrame implements ActionListener {
@@ -37,15 +34,15 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     //share among class as global
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-    private JButton lightButton;
-    private JButton lightImageButton;
-    private JButton addAllButton;
-    private JButton articunoFlyButton;
-    private JButton articunoRestButton;
-    private JButton penguinSwimButton;
-    private JButton penguinRestButton;
-    private JButton fishDisplayButton;
-    private JButton exitButton;
+    private CommonButton lightButton;
+    private CommonButton lightImageButton;
+    private CommonButton addAllButton;
+    private CommonButton articunoFlyButton;
+    private CommonButton articunoRestButton;
+    private CommonButton penguinSwimButton;
+    private CommonButton penguinRestButton;
+    private CommonButton fishDisplayButton;
+    private CommonButton exitButton;
 
     //Panels
     private JPanel titlePanel, imagePanel, buttonPanel, infoPanel;
@@ -118,7 +115,8 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
 
         //Creating a new JPanel for the buttons to go
         buttonPanel = new JPanel();
-
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        
         //Setting colour of button panel
         buttonPanel.setBackground(Color.white);
 
@@ -135,27 +133,29 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         infoPanel.add(buttonLabel);
         infoPanel.setBackground(Color.white);
 
-        //Naming buttons
-        lightButton = new CommonButton("Lights", this).getButton();
-        lightImageButton = new CommonButton("Image Lights", this).getButton();
-        addAllButton = new CommonButton("Add All", this).getButton();
-        articunoFlyButton = new CommonButton("Articuno Fly", this).getButton();
-        articunoRestButton = new CommonButton("Articuno Rest", this).getButton();
-        penguinSwimButton = new CommonButton("Penguin Swim", this).getButton();
-        penguinRestButton = new CommonButton("Penguin Rest", this).getButton();
-        fishDisplayButton = new CommonButton("Fish", this).getButton();
-        exitButton = new CommonButton("Exit", this).getButton();
-
-        //Add the buttons to the buttonPanel
-        buttonPanel.add(lightImageButton);
-        buttonPanel.add(lightButton);
-        buttonPanel.add(articunoFlyButton);
-        buttonPanel.add(articunoRestButton);
-        buttonPanel.add(penguinSwimButton);
-        buttonPanel.add(penguinRestButton);
-        buttonPanel.add(fishDisplayButton);
-        buttonPanel.add(addAllButton);
-        buttonPanel.add(exitButton);
+        lightButton = new CommonButton("Lights", this);
+        lightImageButton = new CommonButton("Image Lights", this);
+        CommonButton[] lights = {lightButton, lightImageButton};
+        buttonPanel.add(new ButtonContainer("Lights:   ", lights));
+        
+        articunoFlyButton = new CommonButton("Articuno Fly", this);
+        articunoRestButton = new CommonButton("Articuno Rest", this);
+        penguinSwimButton = new CommonButton("Penguin Swim", this);
+        penguinRestButton = new CommonButton("Penguin Rest", this);
+        CommonButton[] birds = {articunoFlyButton, articunoRestButton, penguinSwimButton, penguinRestButton};
+        buttonPanel.add(new ButtonContainer("Birds:   ", birds));
+        
+        fishDisplayButton = new CommonButton("Fish", this);
+        CommonButton[] fishes = {fishDisplayButton};
+        buttonPanel.add(new ButtonContainer("Fishes:   ", fishes));
+        
+        addAllButton = new CommonButton("Add All", this);
+        exitButton = new CommonButton("Exit", this);
+        CommonButton[] others = {addAllButton, exitButton};
+        buttonPanel.add(new ButtonContainer("Others:   ", others));
+        
+        
+        
 
         //Positioning Panels
         add(titlePanel, BorderLayout.NORTH);
@@ -168,7 +168,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //set around 70% of the screen size
-        setSize(screenSize.width * 70 / 100, screenSize.height * 80 / 100);
+        setSize(screenSize.width * 70 / 100, screenSize.height);
         setLocation(300, 40);
         setVisible(true);
         setResizable(false);

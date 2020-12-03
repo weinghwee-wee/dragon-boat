@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Wah/Desktop/WIF3007-Design%20Pattern/Assignment/dragon-boat/src/Main/DragonBoatMainFrame.java</file>
-            <file>file:/C:/Users/Wah/Desktop/WIF3007-Design%20Pattern/Assignment/dragon-boat/src/Bird/FlyingBird.java</file>
-            <file>file:/C:/Users/Wah/Desktop/WIF3007-Design%20Pattern/Assignment/dragon-boat/src/Main/DragonBoat.java</file>
-            <file>file:/C:/Users/Wah/Desktop/WIF3007-Design%20Pattern/Assignment/dragon-boat/src/Bird/BirdBehavior.java</file>
-            <file>file:/C:/Users/Wah/Desktop/WIF3007-Design%20Pattern/Assignment/dragon-boat/src/Main/XmasTreeSwing.java</file>
-            <file>file:/C:/Users/Wah/Desktop/WIF3007-Design%20Pattern/Assignment/dragon-boat/src/Bird/Bird.java</file>
-            <file>file:/C:/Users/Wah/Desktop/WIF3007-Design%20Pattern/Assignment/dragon-boat/src/Bird/Articuno.java</file>
+            <file>file:/C:/Users/WH/Desktop/Year4/WIF3007%20Design%20Patterns/Assignment/DPAssignment/src/Light/Light.java</file>
+            <file>file:/C:/Users/WH/Desktop/Year4/WIF3007%20Design%20Patterns/Assignment/DPAssignment/src/Common/CommonButton.java</file>
+            <file>file:/C:/Users/WH/Desktop/Year4/WIF3007%20Design%20Patterns/Assignment/DPAssignment/src/Light/ImageLight.java</file>
+            <file>file:/C:/Users/WH/Desktop/Year4/WIF3007%20Design%20Patterns/Assignment/DPAssignment/src/Light/ShapeLight.java</file>
+            <file>file:/C:/Users/WH/Desktop/Year4/WIF3007%20Design%20Patterns/Assignment/DPAssignment/src/Main/DragonBoatSwing.java</file>
+            <file>file:/C:/Users/WH/Desktop/Year4/WIF3007%20Design%20Patterns/Assignment/DPAssignment/src/Bird/SwimmingBird.java</file>
         </group>
     </open-files>
 </project-private>
