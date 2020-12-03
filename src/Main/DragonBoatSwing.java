@@ -15,6 +15,9 @@ import Bird.FlyingBird;
 import Bird.Penguin;
 import Bird.RestingBird;
 import Bird.SwimmingBird;
+import Fish.DisplayFishCommand;
+import Fish.Fish;
+import Fish.FishInvoker;
 import Common.CommonButton;
 import Light.Light;
 import Light.SimpleLightFactory;
@@ -41,6 +44,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     private JButton articunoRestButton;
     private JButton penguinSwimButton;
     private JButton penguinRestButton;
+    private JButton fishDisplayButton;
     private JButton exitButton;
 
     //Panels
@@ -57,17 +61,25 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
     private boolean imageLights = false;
     private boolean checkArticuno = false;
     private boolean checkPenguin = false;
+    private boolean checkFish = false;
 
     private SimpleLightFactory simpleLightFactory;
     private Bird articuno;
     private Bird penguin;
-
+    private FishInvoker fishInvoker;
+    private Fish fish;
+    
     public DragonBoatSwing() {
         simpleLightFactory = new SimpleLightFactory();
+        fishInvoker = new FishInvoker();
+
         //init the birds
         articuno = new Articuno();
         penguin = new Penguin();
 
+        //init fish
+        fish = new Fish();
+        
         //Set title
         setTitle("Decorate the Dragon Boat!");
         setLayout(new BorderLayout());
@@ -131,6 +143,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         articunoRestButton = new CommonButton("Articuno Rest", this);
         penguinSwimButton = new CommonButton("Penguin Swim", this);
         penguinRestButton = new CommonButton("Penguin Rest", this);
+        fishDisplayButton = new CommonButton("Fish", this);
         exitButton = new CommonButton("Exit", this);
 
         //Add the buttons to the buttonPanel
@@ -140,6 +153,7 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         buttonPanel.add(articunoRestButton);
         buttonPanel.add(penguinSwimButton);
         buttonPanel.add(penguinRestButton);
+        buttonPanel.add(fishDisplayButton);
         buttonPanel.add(addAllButton);
         buttonPanel.add(exitButton);
 
@@ -182,6 +196,12 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         if (checkPenguin) {
             penguin.performBirdBehavior(g);
         }
+        
+        if (checkFish) {
+            DisplayFishCommand display = new DisplayFishCommand(fish, g);
+            fishInvoker.setCommand(display);
+            fishInvoker.buttonWasPressed();
+        }
 
     } //paint
 
@@ -216,6 +236,9 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         } else if (event.getSource() == penguinRestButton) {
             checkPenguin = true;
             penguin.setBirdBehavior(new RestingBird("penguin"));
+            repaint();
+        } else if (event.getSource() == fishDisplayButton) {
+            checkFish = true;
             repaint();
         } else {
             System.exit(0);
