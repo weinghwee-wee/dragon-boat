@@ -8,11 +8,8 @@ package Bird;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import Main.DragonBoatSwing;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.swing.JPanel;
 
 /**
  *
