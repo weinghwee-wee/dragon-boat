@@ -30,7 +30,7 @@ public class Fish {
         image_blue_fish = new ImageIcon(resizedBlueFishImage);
         image_orange_fish = new ImageIcon(resizedOrangeFishImage);
         g.drawImage(resizedBlueFishImage, 1100, 350, null);
-        g.drawImage(resizedOrangeFishImage, 150, 550, null);
+        g.drawImage(resizedOrangeFishImage, 80, 470, null);
     }
 
     public void remove() {
