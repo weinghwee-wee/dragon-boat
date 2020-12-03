@@ -124,14 +124,14 @@ public class DragonBoatSwing extends JFrame implements ActionListener {
         infoPanel.setBackground(Color.white);
 
         //Naming buttons
-        lightButton = new CommonButton("Lights", this).getButton();
-        lightImageButton = new CommonButton("Image Lights", this).getButton();
-        addAllButton = new CommonButton("Add All", this).getButton();
-        articunoFlyButton = new CommonButton("Articuno Fly", this).getButton();
-        articunoRestButton = new CommonButton("Articuno Rest", this).getButton();
-        penguinSwimButton = new CommonButton("Penguin Swim", this).getButton();
-        penguinRestButton = new CommonButton("Penguin Rest", this).getButton();
-        exitButton = new CommonButton("Exit", this).getButton();
+        lightButton = new CommonButton("Lights", this);
+        lightImageButton = new CommonButton("Image Lights", this);
+        addAllButton = new CommonButton("Add All", this);
+        articunoFlyButton = new CommonButton("Articuno Fly", this);
+        articunoRestButton = new CommonButton("Articuno Rest", this);
+        penguinSwimButton = new CommonButton("Penguin Swim", this);
+        penguinRestButton = new CommonButton("Penguin Rest", this);
+        exitButton = new CommonButton("Exit", this);
 
         //Add the buttons to the buttonPanel
         buttonPanel.add(lightImageButton);

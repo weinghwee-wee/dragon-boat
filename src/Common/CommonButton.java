@@ -14,22 +14,13 @@ import javax.swing.JButton;
  *
  * @author WH
  */
-public class CommonButton {
-    String text;
-    ActionListener al;
+public class CommonButton extends JButton{
     
     public CommonButton(String text, ActionListener al) {
-        this.text = text;
-        this.al = al;
-    }
-    
-    public JButton getButton() {
-        JButton jButton = new JButton(text);
-        jButton.setBackground(Color.red);
-        jButton.setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
-        jButton.setForeground(Color.white);
-        jButton.addActionListener(al);
-        
-        return jButton;
+        setText(text);
+        setBackground(Color.red);
+        setFont(new Font("CENTURY GOTHIC", Font.ITALIC, 16));
+        setForeground(Color.white);
+        addActionListener(al);
     }
 }
