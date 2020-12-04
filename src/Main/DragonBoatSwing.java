@@ -1,6 +1,7 @@
 package Main;
 
 import Bird.Articuno;
+import Bird.Bird;
 import Bird.Penguin;
 import Fish.Fish;
 import Fish.FishInvoker;
@@ -22,8 +23,8 @@ public class DragonBoatSwing {
         FishInvoker fishInvoker = new FishInvoker();
 
         //init the birds
-        Articuno articuno = new Articuno();
-        Penguin penguin = new Penguin();
+        Bird articuno = new Articuno();
+        Bird penguin = new Penguin();
 
         //init fish
         Fish fish = new Fish();

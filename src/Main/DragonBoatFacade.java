@@ -65,8 +65,10 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
     //To determine whether to display 
     private boolean lights = false;
     private boolean imageLights = false;
-    private boolean checkArticuno = false;
-    private boolean checkPenguin = false;
+    private boolean checkArticunoFly = false;
+    private boolean checkArticunoRest = false;
+    private boolean checkPenguinSwim = false;
+    private boolean checkPenguinRest = false;
     private boolean checkFish = false;
 
     private SimpleLightFactory simpleLightFactory;
@@ -79,7 +81,9 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         this.simpleLightFactory = simpleLightFactory;
         this.fishInvoker = fishInvoker;
         this.articuno = articuno;
+        articuno.setBirdBehavior(new FlyingBird("articuno"));
         this.penguin = penguin;
+        penguin.setBirdBehavior(new SwimmingBird("penguin"));
         this.fish = fish;
 
     }//Constructor
@@ -188,11 +192,11 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
             light.render(g);
         }
 
-        if (checkArticuno) {
+        if (checkArticunoFly || checkArticunoRest) {
             articuno.performBirdBehavior(g);
         }
 
-        if (checkPenguin) {
+        if (checkPenguinSwim || checkPenguinRest) {
             penguin.performBirdBehavior(g);
         }
 
@@ -215,20 +219,44 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
             imageLights = !imageLights;
             repaint();
         } else if (event.getSource() == articunoFlyButton) {
-            checkArticuno = true;
-            articuno.setBirdBehavior(new FlyingBird("articuno"));
+            if (checkArticunoFly) {
+                checkArticunoFly = false;
+                checkArticunoRest = false;
+            } else {
+                articuno.setBirdBehavior(new FlyingBird("articuno"));
+                checkArticunoFly = true;
+                checkArticunoRest = false;
+            }
             repaint();
         } else if (event.getSource() == articunoRestButton) {
-            checkArticuno = true;
-            articuno.setBirdBehavior(new RestingBird("articuno"));
+            if (checkArticunoRest) {
+                checkArticunoFly = false;
+                checkArticunoRest = false;
+            } else {
+                articuno.setBirdBehavior(new RestingBird("articuno"));
+                checkArticunoRest = true;
+                checkArticunoFly = false;
+            }
             repaint();
         } else if (event.getSource() == penguinSwimButton) {
-            checkPenguin = true;
-            penguin.setBirdBehavior(new SwimmingBird("penguin"));
+            if (checkPenguinSwim) {
+                checkPenguinSwim = false;
+                checkPenguinRest = false;
+            } else {
+                penguin.setBirdBehavior(new SwimmingBird("penguin"));
+                checkPenguinSwim = true;
+                checkPenguinRest = false;
+            }
             repaint();
         } else if (event.getSource() == penguinRestButton) {
-            checkPenguin = true;
-            penguin.setBirdBehavior(new RestingBird("penguin"));
+            if (checkPenguinRest) {
+                checkPenguinSwim = false;
+                checkPenguinRest = false;
+            } else {
+                penguin.setBirdBehavior(new RestingBird("penguin"));
+                checkPenguinRest = true;
+                checkPenguinSwim = false;
+            }
             repaint();
         } else if (event.getSource() == fishDisplayButton) {
             checkFish = !checkFish;
@@ -236,8 +264,8 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         } else if (event.getSource() == addAllButton) {
             lights = true;
             imageLights = true;
-            checkArticuno = true;
-            checkPenguin = true;
+            checkArticunoFly = true;
+            checkPenguinSwim = true;
             checkFish = true;
             repaint();
         } else {
