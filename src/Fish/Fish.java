@@ -20,16 +20,26 @@ public class Fish {
     }
 
     public void display(Graphics g) {
-        ImageIcon image_blue_fish = new ImageIcon(getClass().getResource("../resources/blue_fish.png"));
-        ImageIcon image_orange_fish = new ImageIcon(getClass().getResource("../resources/orange_fish.png"));
-        Image blueFishImage = image_blue_fish.getImage();
-        Image orangeFishImage = image_orange_fish.getImage();
-        Image resizedBlueFishImage = blueFishImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-        Image resizedOrangeFishImage = orangeFishImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-        image_blue_fish = new ImageIcon(resizedBlueFishImage);
-        image_orange_fish = new ImageIcon(resizedOrangeFishImage);
-        g.drawImage(resizedBlueFishImage, 1100, 350, null);
-        g.drawImage(resizedOrangeFishImage, 80, 470, null);
+        ImageIcon image_fish_1 = new ImageIcon(getClass().getResource("../resources/fish_1.png"));
+        ImageIcon image_fish_2 = new ImageIcon(getClass().getResource("../resources/fish_2.png"));
+        ImageIcon image_fish_3 = new ImageIcon(getClass().getResource("../resources/fish_3.png"));
+        
+        Image fish1Image = image_fish_1.getImage();
+        Image fish2Image = image_fish_2.getImage();
+        Image fish3Image = image_fish_3.getImage();
+        
+        Image resizedFish1Image = fish1Image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        Image resizedFish2Image = fish2Image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        Image resizedFish3Image = fish3Image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        
+        image_fish_1 = new ImageIcon(resizedFish1Image);
+        image_fish_2 = new ImageIcon(resizedFish2Image);
+        image_fish_3 = new ImageIcon(resizedFish3Image);
+        
+        g.drawImage(resizedFish1Image, 1150, 450, null);
+        g.drawImage(resizedFish2Image, 80, 570, null);
+        g.drawImage(resizedFish3Image, 800, 670, null);
+        
     }
 
     public void remove() {
