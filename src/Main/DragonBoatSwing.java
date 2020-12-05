@@ -6,6 +6,7 @@ import Bird.Penguin;
 import Fish.Fish;
 import Fish.FishInvoker;
 import Light.SimpleLightFactory;
+import Music.Music;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,7 +30,10 @@ public class DragonBoatSwing {
         //init fish
         Fish fish = new Fish();
 
-        DragonBoatFacade dragonBoadFacade = new DragonBoatFacade(simpleLightFactory, fishInvoker, articuno, penguin, fish);
+        //init music
+        Music music = Music.getInstance();
+
+        DragonBoatFacade dragonBoadFacade = new DragonBoatFacade(simpleLightFactory, fishInvoker, articuno, penguin, fish, music);
         dragonBoadFacade.createDragonBoatGui();
 
     }//Constructor

@@ -16,6 +16,7 @@ import Fish.Fish;
 import Fish.FishInvoker;
 import Light.Light;
 import Light.SimpleLightFactory;
+import Music.Music;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -52,6 +53,8 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
     private CommonButton penguinRestButton;
     private CommonButton fishDisplayButton;
     private CommonButton exitButton;
+    private CommonButton playStopButton;
+    private CommonButton pauseResumeButton;
 
     //Panels
     private JPanel titlePanel, imagePanel, buttonPanel, infoPanel;
@@ -70,14 +73,17 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
     private boolean checkPenguinSwim = false;
     private boolean checkPenguinRest = false;
     private boolean checkFish = false;
+    private boolean isMusicPlay = false;
+    private boolean isMusicPause = false;
 
     private SimpleLightFactory simpleLightFactory;
     private Bird articuno;
     private Bird penguin;
     private FishInvoker fishInvoker;
     private Fish fish;
+    private Music music;
 
-    public DragonBoatFacade(SimpleLightFactory simpleLightFactory, FishInvoker fishInvoker, Bird articuno, Bird penguin, Fish fish) {
+    public DragonBoatFacade(SimpleLightFactory simpleLightFactory, FishInvoker fishInvoker, Bird articuno, Bird penguin, Fish fish, Music music) {
         this.simpleLightFactory = simpleLightFactory;
         this.fishInvoker = fishInvoker;
         this.articuno = articuno;
@@ -85,6 +91,7 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         this.penguin = penguin;
         penguin.setBirdBehavior(new SwimmingBird("penguin"));
         this.fish = fish;
+        this.music = music;
 
     }//Constructor
 
@@ -155,6 +162,14 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         fishDisplayButton = new CommonButton("Fish", this);
         CommonButton[] fishes = {fishDisplayButton};
         buttonPanel.add(new ButtonContainer("Fishes:   ", fishes));
+
+        playStopButton = new CommonButton("Play Music", this);
+        pauseResumeButton = new CommonButton("Pause", this);
+        if(!isMusicPlay){
+            pauseResumeButton.setEnabled(false);
+        }
+        CommonButton[] musics = {playStopButton, pauseResumeButton};
+        buttonPanel.add(new ButtonContainer("Music", musics));
 
         addAllButton = new CommonButton("Add All", this);
         exitButton = new CommonButton("Exit", this);
@@ -261,6 +276,29 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         } else if (event.getSource() == fishDisplayButton) {
             checkFish = !checkFish;
             repaint();
+        } else if (event.getSource() == playStopButton) {
+            if(!isMusicPlay){
+                playStopButton.setText("Stop Music");
+                music.playMusic();
+                pauseResumeButton.setEnabled(true);
+                isMusicPlay = !isMusicPlay;
+            } else if (isMusicPlay) {
+                playStopButton.setText("Play Music");
+                music.stopMusic();
+                pauseResumeButton.setEnabled(false);
+                isMusicPlay = !isMusicPlay;
+            }
+
+        } else if (event.getSource() == pauseResumeButton) {
+          if(!isMusicPause){
+              pauseResumeButton.setText("Resume");
+              music.pauseMusic();
+              isMusicPause = !isMusicPause;
+          } else if (isMusicPause) {
+              pauseResumeButton.setText("Pause");
+              music.resumeMusic();
+              isMusicPause = !isMusicPause;
+          }
         } else if (event.getSource() == addAllButton) {
             lights = true;
             imageLights = true;
