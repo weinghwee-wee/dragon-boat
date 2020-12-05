@@ -286,6 +286,7 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
                 playStopButton.setText("Play Music");
                 music.stopMusic();
                 pauseResumeButton.setEnabled(false);
+                pauseResumeButton.setText("Pause");
                 isMusicPlay = !isMusicPlay;
             }
 
