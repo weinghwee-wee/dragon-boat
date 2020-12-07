@@ -13,19 +13,18 @@ import java.awt.Graphics;
  * @author WH
  */
 public class SquareLight extends Light{
-    final int x = 600;
-    final int y = 470;
     
     public SquareLight() {
+        x_coordinate = 530;
     }
     
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.ORANGE);
-        g.fillRect(y, x, 20, 20);
-        g.fillRect(y + 100, x, 20, 20);
-        g.fillRect(y + 200, x, 20, 20);
-        g.fillRect(y + 300, x, 20, 20);
-        g.fillRect(y + 400, x, 20, 20);
+        g.setColor(Color.green);
+        
+        for (int i = 0; i < 5; i++) {
+            g.fillRect(y_coordinate, x_coordinate, 20, 20);
+            y_coordinate = y_coordinate + distance;
+        }
     }
 }

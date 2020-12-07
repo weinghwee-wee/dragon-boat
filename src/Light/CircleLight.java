@@ -13,19 +13,17 @@ import java.awt.Graphics;
  * @author WH
  */
 public class CircleLight extends Light{
-    final int x = 570;
-    final int y = 470;
-    
     public CircleLight() {
+        x_coordinate = 570;
     }
     
     @Override
     public void render(Graphics g) {
         g.setColor(Color.YELLOW);
-        g.fillOval(y, x, 20, 20);
-        g.fillOval(y + 100, x, 20, 20);
-        g.fillOval(y + 200, x, 20, 20);
-        g.fillOval(y + 300, x, 20, 20);
-        g.fillOval(y + 400, x, 20, 20);
+        
+        for (int i = 0; i < 5; i++) {
+            g.fillOval(y_coordinate, x_coordinate, 20, 20);
+            y_coordinate = y_coordinate + distance;
+        }
     }
 }

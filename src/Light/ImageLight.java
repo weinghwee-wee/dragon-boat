@@ -14,23 +14,21 @@ import javax.swing.ImageIcon;
  * @author WH
  */
 public class ImageLight extends Light {
-    final int x = 530;
-    final int y = 500;
     
     public ImageLight() {
+        x_coordinate = 600;
     }
     
     @Override
     public void render(Graphics g) {
         ImageIcon image = new ImageIcon(getClass().getResource("../resources/light_image.png"));
         Image lightImage = image.getImage();
-        Image resizedImage = lightImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        Image resizedImage = lightImage.getScaledInstance(70, 70, Image.SCALE_SMOOTH);
         ImageIcon imageIcon = new ImageIcon(resizedImage);
         
-        g.drawImage(resizedImage, y, x, null);
-        g.drawImage(resizedImage, y + 100, x, null);
-        g.drawImage(resizedImage, y + 200, x, null);
-        g.drawImage(resizedImage, y + 300, x, null);
-        g.drawImage(resizedImage, y + 400, x, null);
+        for (int i = 0; i < 5; i++) {
+            g.drawImage(resizedImage, y_coordinate, x_coordinate, null);
+            y_coordinate = y_coordinate + distance;
+        }
     }
 }
