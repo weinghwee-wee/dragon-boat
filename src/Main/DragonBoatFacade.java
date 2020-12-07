@@ -11,6 +11,7 @@ import Bird.RestingBird;
 import Bird.SwimmingBird;
 import Common.ButtonContainer;
 import Common.CommonButton;
+import Common.TextLabel;
 import Fish.DisplayFishCommand;
 import Fish.Fish;
 import Fish.FishInvoker;
@@ -103,7 +104,7 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         setLayout(new BorderLayout());
 
         //Setting the title of the JLabel
-        title = new JLabel("Click the buttons below to decorate your Dragon Boat!");
+        title = new TextLabel("Click the buttons to decorate your Dragon Boat");
 
         //Setting the text colour to red and positioning it to the centre
         title.setForeground(Color.red);
@@ -236,15 +237,12 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
 
         if (event.getSource() == circleLightButton) {
             circleLights = !circleLights;
-            repaint();
         }//if light
         else if (event.getSource() == squareLightButton) {
             squareLights = !squareLights;
-            repaint();
         }
         else if (event.getSource() == lightImageButton) {
             imageLights = !imageLights;
-            repaint();
         } else if (event.getSource() == articunoFlyButton) {
             if (checkArticunoFly) {
                 checkArticunoFly = false;
@@ -254,7 +252,6 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
                 checkArticunoFly = true;
                 checkArticunoRest = false;
             }
-            repaint();
         } else if (event.getSource() == articunoRestButton) {
             if (checkArticunoRest) {
                 checkArticunoFly = false;
@@ -264,7 +261,6 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
                 checkArticunoRest = true;
                 checkArticunoFly = false;
             }
-            repaint();
         } else if (event.getSource() == penguinSwimButton) {
             if (checkPenguinSwim) {
                 checkPenguinSwim = false;
@@ -274,7 +270,6 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
                 checkPenguinSwim = true;
                 checkPenguinRest = false;
             }
-            repaint();
         } else if (event.getSource() == penguinRestButton) {
             if (checkPenguinRest) {
                 checkPenguinSwim = false;
@@ -284,10 +279,8 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
                 checkPenguinRest = true;
                 checkPenguinSwim = false;
             }
-            repaint();
         } else if (event.getSource() == fishDisplayButton) {
             checkFish = !checkFish;
-            repaint();
         } else if (event.getSource() == playStopButton) {
             if(!isMusicPlay){
                 playStopButton.setText("Stop Music");
@@ -319,11 +312,12 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
             checkArticunoFly = true;
             checkPenguinSwim = true;
             checkFish = true;
-            repaint();
         } else {
             System.exit(0);
 
-        }//else exit
+        }
+        
+        repaint();
 
     } //actionPerformed
 
