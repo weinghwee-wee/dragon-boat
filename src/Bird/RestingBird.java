@@ -11,10 +11,6 @@ import javax.swing.ImageIcon;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-/**
- *
- * @author WH
- */
 public class RestingBird implements BirdBehavior {
 
     Image image;

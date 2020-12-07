@@ -11,10 +11,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author WH
- */
 public class FlyingBird implements BirdBehavior {
 
     Image image;
@@ -35,7 +31,6 @@ public class FlyingBird implements BirdBehavior {
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
         Image resizedImage = imageIcon.getImage().getScaledInstance(screen.width * 20 / 100, screen.height * 20 / 100, Image.SCALE_SMOOTH);
 
-        //without this line cannot paint out.. i also weird
         ImageIcon weird = new ImageIcon(resizedImage);
 
         //set x , y , image

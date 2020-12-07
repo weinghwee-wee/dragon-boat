@@ -7,10 +7,6 @@ package Fish;
 
 import java.awt.Graphics;
 
-/**
- *
- * @author ganze
- */
 public class DisplayFishCommand implements Command {
 
     private Fish fish;

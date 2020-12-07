@@ -7,10 +7,6 @@ package Bird;
 
 import java.awt.Graphics;
 
-/**
- *
- * @author WH
- */
 public abstract class Bird {
 
     BirdBehavior birdBehavior;

@@ -13,10 +13,6 @@ import Music.Music;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- *
- * @author ganze
- */
 public class DragonBoatSwing {
 
     public DragonBoatSwing() {

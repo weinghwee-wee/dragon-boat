@@ -173,7 +173,7 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
             pauseResumeButton.setEnabled(false);
         }
         CommonButton[] musics = {playStopButton, pauseResumeButton};
-        buttonPanel.add(new ButtonContainer("Music", musics));
+        buttonPanel.add(new ButtonContainer("Music:   ", musics));
 
         addAllButton = new CommonButton("Add All", this);
         exitButton = new CommonButton("Exit", this);
@@ -230,9 +230,9 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
             fishInvoker.buttonWasPressed();
         }
 
-    } //paint
+    }
 
-    //Coding the event-handling routine
+
     public void actionPerformed(ActionEvent event) {
 
         if (event.getSource() == circleLightButton) {
@@ -319,6 +319,6 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         
         repaint();
 
-    } //actionPerformed
+    } 
 
 }

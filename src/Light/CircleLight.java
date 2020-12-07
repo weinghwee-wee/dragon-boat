@@ -8,10 +8,6 @@ package Light;
 import java.awt.Color;
 import java.awt.Graphics;
 
-/**
- *
- * @author WH
- */
 public class CircleLight extends Light{
     public CircleLight() {
         x_coordinate = 570;

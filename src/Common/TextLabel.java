@@ -9,10 +9,6 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 
-/**
- *
- * @author WH
- */
 public class TextLabel extends JLabel {
     
     public TextLabel(String text) {

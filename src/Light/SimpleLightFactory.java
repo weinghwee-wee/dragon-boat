@@ -5,10 +5,6 @@
  */
 package Light;
 
-/**
- *
- * @author WH
- */
 public class SimpleLightFactory {
     public Light getLight(String lightType) {
         Light light = null;

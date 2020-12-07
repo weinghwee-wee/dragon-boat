@@ -8,10 +8,6 @@ package Light;
 import java.awt.Color;
 import java.awt.Graphics;
 
-/**
- *
- * @author WH
- */
 public class SquareLight extends Light{
     
     public SquareLight() {

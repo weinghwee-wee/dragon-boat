@@ -9,11 +9,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-
-/**
- *
- * @author ganze
- */
 public class Fish {
 
     public Fish() {

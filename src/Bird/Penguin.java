@@ -5,10 +5,6 @@
  */
 package Bird;
 
-/**
- *
- * @author Wah
- */
 public class Penguin extends Bird {
 
     public Penguin() {

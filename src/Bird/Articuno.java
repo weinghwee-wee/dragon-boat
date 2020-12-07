@@ -5,10 +5,6 @@
  */
 package Bird;
 
-/**
- *
- * @author WH
- */
 public class Articuno extends Bird {
 
     public Articuno() {

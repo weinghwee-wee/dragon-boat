@@ -6,12 +6,10 @@
 package Common;
 
 import java.awt.Color;
+import java.awt.Component;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-/**
- *
- * @author WH
- */
 public class ButtonContainer extends JPanel {
     
     public ButtonContainer(String category, CommonButton[] cmbs) {

@@ -5,10 +5,6 @@
  */
 package Fish;
 
-/**
- *
- * @author ganze
- */
 public interface Command {
     public void execute();
 }

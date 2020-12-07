@@ -5,10 +5,6 @@
  */
 package Fish;
 
-/**
- *
- * @author ganze
- */
 public class FishInvoker {
 
     private Command command;

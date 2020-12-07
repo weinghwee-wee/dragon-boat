@@ -5,10 +5,6 @@
  */
 package Fish;
 
-/**
- *
- * @author ganze
- */
 public class RemoveFishCommand implements Command {
 
     private Fish fish;

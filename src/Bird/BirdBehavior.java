@@ -7,18 +7,8 @@ package Bird;
 
 import java.awt.Graphics;
 
-/**
- *
- * @author WH
- */
+
 public interface BirdBehavior {
 
     public void move(Graphics g);
-
-    //for drawing purpose
-//    public int getX();
-//
-//    public int getY();
-//
-//    public Image getImage();
 }

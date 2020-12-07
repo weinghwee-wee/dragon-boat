@@ -10,10 +10,6 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-/**
- *
- * @author WH
- */
 public class CommonButton extends JButton{
     
     public CommonButton(String text, ActionListener al) {

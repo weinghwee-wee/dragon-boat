@@ -9,10 +9,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author WH
- */
 public class ImageLight extends Light {
     
     public ImageLight() {

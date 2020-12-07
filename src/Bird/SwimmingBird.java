@@ -11,10 +11,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Wah
- */
 public class SwimmingBird implements BirdBehavior {
 
     Image image;
