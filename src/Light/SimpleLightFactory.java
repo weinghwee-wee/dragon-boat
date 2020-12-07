@@ -12,9 +12,12 @@ package Light;
 public class SimpleLightFactory {
     public Light getLight(String lightType) {
         Light light = null;
-        if (lightType == "shape") {
-            light = new ShapeLight();
-        } else if (lightType == "image") {
+        if (lightType == "circle") {
+            light = new CircleLight();
+        } else if (lightType == "square"){
+            light = new SquareLight();
+        }
+        else if (lightType == "image") {
             light = new ImageLight();
         }
         

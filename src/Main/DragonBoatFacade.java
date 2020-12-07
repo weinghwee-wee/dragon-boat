@@ -44,7 +44,8 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
     //share among class as global
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-    private CommonButton lightButton;
+    private CommonButton circleLightButton;
+    private CommonButton squareLightButton;
     private CommonButton lightImageButton;
     private CommonButton addAllButton;
     private CommonButton articunoFlyButton;
@@ -66,7 +67,8 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
     private ImageIcon image;
 
     //To determine whether to display 
-    private boolean lights = false;
+    private boolean circleLights = false;
+    private boolean squareLights = false;
     private boolean imageLights = false;
     private boolean checkArticunoFly = false;
     private boolean checkArticunoRest = false;
@@ -147,9 +149,10 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         infoPanel.add(buttonLabel);
         infoPanel.setBackground(Color.white);
 
-        lightButton = new CommonButton("Lights", this);
+        circleLightButton = new CommonButton("Circle Lights", this);
+        squareLightButton = new CommonButton("Square Lights", this);
         lightImageButton = new CommonButton("Image Lights", this);
-        CommonButton[] lights = {lightButton, lightImageButton};
+        CommonButton[] lights = {circleLightButton, squareLightButton, lightImageButton};
         buttonPanel.add(new ButtonContainer("Lights:   ", lights));
 
         articunoFlyButton = new CommonButton("Articuno Fly", this);
@@ -197,11 +200,16 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
 
         //Call the paint method of the superclass
         super.paint(g);
-        if (lights) {
-            Light light = simpleLightFactory.getLight("shape");
+        if (circleLights) {
+            Light light = simpleLightFactory.getLight("circle");
             light.render(g);
         }
 
+        if (squareLights) {
+            Light light = simpleLightFactory.getLight("square");
+            light.render(g);
+        }
+        
         if (imageLights) {
             Light light = simpleLightFactory.getLight("image");
             light.render(g);
@@ -226,10 +234,14 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
     //Coding the event-handling routine
     public void actionPerformed(ActionEvent event) {
 
-        if (event.getSource() == lightButton) {
-            lights = !lights;
+        if (event.getSource() == circleLightButton) {
+            circleLights = !circleLights;
             repaint();
         }//if light
+        else if (event.getSource() == squareLightButton) {
+            squareLights = !squareLights;
+            repaint();
+        }
         else if (event.getSource() == lightImageButton) {
             imageLights = !imageLights;
             repaint();
@@ -301,7 +313,8 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
               isMusicPause = !isMusicPause;
           }
         } else if (event.getSource() == addAllButton) {
-            lights = true;
+            circleLights = true;
+            squareLights = true;
             imageLights = true;
             checkArticunoFly = true;
             checkPenguinSwim = true;
