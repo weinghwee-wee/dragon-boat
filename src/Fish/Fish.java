@@ -39,7 +39,4 @@ public class Fish {
         g.drawImage(resizedFish2Image,  screen.width * 4 / 100, screen.height * 53 / 100, null);
         g.drawImage(resizedFish3Image, screen.width * 42 / 100, screen.height * 62 / 100, null); 
     }
-
-    public void remove() {
-    }
 }
