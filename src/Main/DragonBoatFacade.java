@@ -18,13 +18,7 @@ import Fish.FishInvoker;
 import Light.Light;
 import Light.SimpleLightFactory;
 import Music.Music;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
@@ -306,12 +300,12 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
               isMusicPause = !isMusicPause;
           }
         } else if (event.getSource() == addAllButton) {
-            circleLights = true;
-            squareLights = true;
-            imageLights = true;
-            checkArticunoFly = true;
-            checkPenguinSwim = true;
-            checkFish = true;
+            circleLights = !circleLights;
+            squareLights = !squareLights;
+            imageLights = !imageLights;
+            checkArticunoFly = !checkArticunoFly;
+            checkPenguinSwim = !checkPenguinSwim;
+            checkFish = !checkFish;
         } else {
             System.exit(0);
 
