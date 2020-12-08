@@ -8,8 +8,6 @@ package Bird;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
 public class RestingBird implements BirdBehavior {
 
@@ -17,7 +15,6 @@ public class RestingBird implements BirdBehavior {
     int x;
     int y;
     String name;
-    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
     public RestingBird(String name) {
         this.name = name;
@@ -30,20 +27,20 @@ public class RestingBird implements BirdBehavior {
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
 
         if (name.equalsIgnoreCase("articuno")) {
-            Image resizedImage = imageIcon.getImage().getScaledInstance(screen.width * 15 / 100, screen.height * 15 / 100, Image.SCALE_SMOOTH);
+            Image resizedImage = imageIcon.getImage().getScaledInstance(150, 125, Image.SCALE_SMOOTH);
             ImageIcon weird = new ImageIcon(resizedImage);
 
             image = resizedImage;
-            x = screen.width * 8 / 100;
-            y = screen.height * 9 / 100;
+            x = 140;
+            y = 120;
 
         } else if (name.equalsIgnoreCase("penguin")) {
-            Image resizedImage = imageIcon.getImage().getScaledInstance(screen.width * 8 / 100, screen.height * 12 / 100, Image.SCALE_SMOOTH);
+            Image resizedImage = imageIcon.getImage().getScaledInstance(90, 115, Image.SCALE_SMOOTH);
             ImageIcon weird = new ImageIcon(resizedImage);
 
             image = resizedImage;
-            x = screen.width * 3 / 100;
-            y = screen.height * 20 / 100;
+            x = 60;
+            y = 190;
         }
 
         g.drawImage(image, x, y, null);

@@ -5,10 +5,8 @@
  */
 package Bird;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 public class SwimmingBird implements BirdBehavior {
@@ -17,7 +15,6 @@ public class SwimmingBird implements BirdBehavior {
     int x;
     int y;
     String name;
-    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
     public SwimmingBird(String name) {
         this.name = name;
@@ -28,13 +25,13 @@ public class SwimmingBird implements BirdBehavior {
         //read image 
         String imageURL = "/resources/" + name + "_swim.png";
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
-        Image resizedImage = imageIcon.getImage().getScaledInstance(screen.width * 10 / 100, screen.height * 10 / 100, Image.SCALE_SMOOTH);
+        Image resizedImage = imageIcon.getImage().getScaledInstance(125, 75, Image.SCALE_SMOOTH);
         ImageIcon weird = new ImageIcon(resizedImage);
 
         //set x , y , image
         image = resizedImage;
-        x = screen.width * 10 / 100;
-        y = screen.height * 60 / 100;
+        x = 250;
+        y = 475;
 
         g.drawImage(image, x, y, null);
     }

@@ -5,10 +5,8 @@
  */
 package Bird;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 public class FlyingBird implements BirdBehavior {
@@ -17,7 +15,6 @@ public class FlyingBird implements BirdBehavior {
     int x;
     int y;
     String name;
-    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
     //pass name of the bird when init
     public FlyingBird(String name) {
@@ -29,13 +26,13 @@ public class FlyingBird implements BirdBehavior {
         //get image of behavior when perform behavior
         String imageURL = "/resources/" + name + "_fly.png";
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
-        Image resizedImage = imageIcon.getImage().getScaledInstance(screen.width * 20 / 100, screen.height * 20 / 100, Image.SCALE_SMOOTH);
+        Image resizedImage = imageIcon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
 
         ImageIcon weird = new ImageIcon(resizedImage);
 
         //set x , y , image
         image = resizedImage;
-        x = screen.width * 50 / 100;
+        x = 700;
         y = 70;
         
         g.drawImage(image, x, y, null);

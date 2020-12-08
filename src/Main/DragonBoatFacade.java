@@ -84,9 +84,7 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         this.simpleLightFactory = simpleLightFactory;
         this.fishInvoker = fishInvoker;
         this.articuno = articuno;
-        articuno.setBirdBehavior(new FlyingBird("articuno"));
         this.penguin = penguin;
-        penguin.setBirdBehavior(new SwimmingBird("penguin"));
         this.fish = fish;
         this.music = music;
 
@@ -117,7 +115,7 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         //Retrieving image from the file
         image = new ImageIcon(getClass().getResource("/resources/dragon_boat.png"));
         Image i = image.getImage();
-        Image resizedImage = i.getScaledInstance(screenSize.width * 70 / 100, screenSize.height * 70 / 100, Image.SCALE_SMOOTH);
+        Image resizedImage = i.getScaledInstance(1024, 500, Image.SCALE_SMOOTH);
         image = new ImageIcon(resizedImage);
         imageLabel = new JLabel(image);
         imagePanel = new JPanel();
@@ -185,7 +183,7 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //set around 70% of the screen size
-        setSize(screenSize.width * 70 / 100, screenSize.height * 90 / 100);
+        setSize(1024, 768);
         setLocation(300, 40);
         setVisible(true);
         setResizable(false);
