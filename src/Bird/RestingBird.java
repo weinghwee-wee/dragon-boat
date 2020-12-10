@@ -28,7 +28,7 @@ public class RestingBird implements BirdBehavior {
 
         if (name.equalsIgnoreCase("articuno")) {
             Image resizedImage = imageIcon.getImage().getScaledInstance(150, 125, Image.SCALE_SMOOTH);
-            ImageIcon weird = new ImageIcon(resizedImage);
+            ImageIcon imgIcon = new ImageIcon(resizedImage);
 
             image = resizedImage;
             x = 140;
@@ -36,7 +36,7 @@ public class RestingBird implements BirdBehavior {
 
         } else if (name.equalsIgnoreCase("penguin")) {
             Image resizedImage = imageIcon.getImage().getScaledInstance(90, 115, Image.SCALE_SMOOTH);
-            ImageIcon weird = new ImageIcon(resizedImage);
+            ImageIcon imgIcon = new ImageIcon(resizedImage);
 
             image = resizedImage;
             x = 60;

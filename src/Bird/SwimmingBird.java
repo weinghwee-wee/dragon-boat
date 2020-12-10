@@ -26,7 +26,7 @@ public class SwimmingBird implements BirdBehavior {
         String imageURL = "/resources/" + name + "_swim.png";
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
         Image resizedImage = imageIcon.getImage().getScaledInstance(125, 75, Image.SCALE_SMOOTH);
-        ImageIcon weird = new ImageIcon(resizedImage);
+        ImageIcon imgIcon = new ImageIcon(resizedImage);
 
         //set x , y , image
         image = resizedImage;

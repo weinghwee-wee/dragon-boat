@@ -28,7 +28,7 @@ public class FlyingBird implements BirdBehavior {
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imageURL));
         Image resizedImage = imageIcon.getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH);
 
-        ImageIcon weird = new ImageIcon(resizedImage);
+        ImageIcon imgIcon = new ImageIcon(resizedImage);
 
         //set x , y , image
         image = resizedImage;
