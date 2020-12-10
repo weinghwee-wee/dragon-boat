@@ -10,7 +10,7 @@ import java.awt.Graphics;
 
 public class CircleLight extends Light{
     public CircleLight() {
-        x_coordinate = 570;
+        x_coordinate = 420;
     }
     
     @Override

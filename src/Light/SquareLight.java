@@ -11,7 +11,7 @@ import java.awt.Graphics;
 public class SquareLight extends Light{
     
     public SquareLight() {
-        x_coordinate = 530;
+        x_coordinate = 450;
     }
     
     @Override

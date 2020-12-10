@@ -9,7 +9,7 @@ import java.awt.Graphics;
 
 public abstract class Light {
     final int distance = 100;
-    int y_coordinate = 470;
+    int y_coordinate = 300;
     int x_coordinate;
     
     public abstract void render(Graphics g);

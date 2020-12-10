@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 public class ImageLight extends Light {
     
     public ImageLight() {
-        x_coordinate = 600;
+        x_coordinate = 470;
     }
     
     @Override
