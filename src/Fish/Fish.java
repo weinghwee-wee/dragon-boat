@@ -35,8 +35,8 @@ public class Fish {
         image_fish_2 = new ImageIcon(resizedFish2Image);
         image_fish_3 = new ImageIcon(resizedFish3Image);
 
-        g.drawImage(resizedFish1Image, screen.width * 60 / 100, screen.height * 41 / 100, null);
-        g.drawImage(resizedFish2Image,  screen.width * 4 / 100, screen.height * 53 / 100, null);
-        g.drawImage(resizedFish3Image, screen.width * 42 / 100, screen.height * 62 / 100, null); 
+        g.drawImage(resizedFish1Image, screen.width * 45 / 100, screen.height * 40 / 100, null);
+        g.drawImage(resizedFish2Image,  screen.width * 4 / 100, screen.height * 40 / 100, null);
+        g.drawImage(resizedFish3Image, screen.width * 35 / 100, screen.height * 43 / 100, null); 
     }
 }
