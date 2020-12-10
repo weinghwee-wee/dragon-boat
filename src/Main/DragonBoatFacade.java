@@ -298,12 +298,12 @@ public class DragonBoatFacade extends JFrame implements ActionListener {
               isMusicPause = !isMusicPause;
           }
         } else if (event.getSource() == addAllButton) {
-            circleLights = !circleLights;
-            squareLights = !squareLights;
-            imageLights = !imageLights;
-            checkArticunoFly = !checkArticunoFly;
-            checkPenguinSwim = !checkPenguinSwim;
-            checkFish = !checkFish;
+            circleLights = true;
+            squareLights = true;
+            imageLights = true;
+            checkArticunoFly = true;
+            checkPenguinSwim = true;
+            checkFish = true;
         } else {
             System.exit(0);
 
